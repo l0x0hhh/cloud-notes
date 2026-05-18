@@ -1,0 +1,39 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+
+# Node
+node_modules/
+
+# Go
+*.exe
+*.test
+
+# Test artifacts
+report.html
+tests/api/report.html
+tests/api/__pycache__/
+tests/api/.pytest_cache/
+tests/__pycache__/
+tests/.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# History (IDE local history)
+.history/
+
+# Misc
+*.log
+.env

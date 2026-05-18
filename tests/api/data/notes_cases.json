@@ -1,0 +1,261 @@
+[
+  {
+    "test_id": "create_note_normal",
+    "description": "创建笔记-正常标题和内容",
+    "scenario": "create",
+    "body": {
+      "title": "测试笔记",
+      "content": "这是笔记内容"
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  },
+  {
+    "test_id": "create_note_empty_title",
+    "description": "创建笔记-空标题",
+    "scenario": "create",
+    "body": {
+      "title": "",
+      "content": "内容"
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  },
+  {
+    "test_id": "create_note_empty_content",
+    "description": "创建笔记-空内容",
+    "scenario": "create",
+    "body": {
+      "title": "标题",
+      "content": ""
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  },
+  {
+    "test_id": "create_note_missing_title",
+    "description": "创建笔记-缺少title字段",
+    "scenario": "create",
+    "body": {
+      "content": "内容"
+    },
+    "expected_status": 400,
+    "expected_key": "error"
+  },
+  {
+    "test_id": "create_note_missing_content",
+    "description": "创建笔记-缺少content字段",
+    "scenario": "create",
+    "body": {
+      "title": "标题"
+    },
+    "expected_status": 400,
+    "expected_key": "error"
+  },
+  {
+    "test_id": "create_note_no_body",
+    "description": "创建笔记-请求体为空",
+    "scenario": "create",
+    "use_empty_body": true,
+    "expected_status": 400,
+    "expected_key": "error"
+  },
+  {
+    "test_id": "create_note_long_title",
+    "description": "创建笔记-超长标题（1000字符）",
+    "scenario": "create",
+    "body": {
+      "title": "测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测测",
+      "content": "内容"
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  },
+  {
+    "test_id": "create_note_special_chars",
+    "description": "创建笔记-标题含HTML标签",
+    "scenario": "create",
+    "body": {
+      "title": "<script>alert('xss')</script>",
+      "content": "内容"
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  },
+  {
+    "test_id": "create_note_unicode",
+    "description": "创建笔记-Unicode全字符集标题",
+    "scenario": "create",
+    "body": {
+      "title": "中文日本語한국어🔥🎉",
+      "content": "多语言内容测试"
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  },
+  {
+    "test_id": "get_list_normal",
+    "description": "获取笔记列表-正常返回",
+    "scenario": "get_list",
+    "expected_status": 200,
+    "expected_type": "list"
+  },
+  {
+    "test_id": "get_list_empty",
+    "description": "获取笔记列表-新用户空列表",
+    "scenario": "get_list_empty",
+    "expected_status": 200,
+    "expected_type": "empty_list"
+  },
+  {
+    "test_id": "get_note_by_id_normal",
+    "description": "获取单条笔记-正常获取",
+    "scenario": "get_by_id",
+    "expected_status": 200,
+    "expected_key": "title"
+  },
+  {
+    "test_id": "get_note_by_id_not_exist",
+    "description": "获取单条笔记-不存在的ID",
+    "scenario": "get_by_id_not_exist",
+    "not_exist_id": 99999,
+    "expected_status": 404,
+    "expected_error": "笔记不存在"
+  },
+  {
+    "test_id": "get_note_by_id_invalid_format",
+    "description": "获取单条笔记-ID格式错误（非数字）",
+    "scenario": "get_by_id_invalid",
+    "invalid_id": "abc",
+    "expected_status": 400,
+    "expected_error": "笔记ID格式错误"
+  },
+  {
+    "test_id": "update_note_normal",
+    "description": "更新笔记-正常更新标题和内容",
+    "scenario": "update",
+    "body": {
+      "title": "更新后的标题",
+      "content": "更新后的内容"
+    },
+    "expected_status": 200,
+    "expected_message": "更新成功"
+  },
+  {
+    "test_id": "update_note_title_only",
+    "description": "更新笔记-只更新标题",
+    "scenario": "update",
+    "body": {
+      "title": "新标题",
+      "content": ""
+    },
+    "expected_status": 200,
+    "expected_message": "更新成功"
+  },
+  {
+    "test_id": "update_note_not_exist",
+    "description": "更新笔记-不存在的笔记ID",
+    "scenario": "update_not_exist",
+    "not_exist_id": 99999,
+    "body": {
+      "title": "标题",
+      "content": "内容"
+    },
+    "expected_status": 500,
+    "expected_error": "更新失败"
+  },
+  {
+    "test_id": "update_note_missing_body",
+    "description": "更新笔记-请求体为空",
+    "scenario": "update_empty_body",
+    "expected_status": 400,
+    "expected_error": "参数错误"
+  },
+  {
+    "test_id": "delete_note_normal",
+    "description": "删除笔记-正常删除",
+    "scenario": "delete",
+    "expected_status": 200,
+    "expected_message": "删除成功"
+  },
+  {
+    "test_id": "delete_note_not_exist",
+    "description": "删除笔记-不存在的笔记ID",
+    "scenario": "delete_not_exist",
+    "not_exist_id": 99999,
+    "expected_status": 500,
+    "expected_error": "删除失败"
+  },
+  {
+    "test_id": "delete_then_get",
+    "description": "删除后访问-删除笔记后再次获取应返回404",
+    "scenario": "delete_then_get",
+    "expected_status": 404,
+    "expected_error": "笔记不存在"
+  },
+  {
+    "test_id": "delete_then_update",
+    "description": "删除后更新-删除笔记后尝试更新",
+    "scenario": "delete_then_update",
+    "body": {
+      "title": "尝试更新",
+      "content": "已删除的笔记"
+    },
+    "expected_status": 500,
+    "expected_error": "更新失败"
+  },
+  {
+    "test_id": "delete_then_delete",
+    "description": "重复删除-两次删除同一笔记",
+    "scenario": "delete_then_delete",
+    "expected_status": 500,
+    "expected_error": "删除失败"
+  },
+  {
+    "test_id": "cross_user_get_note",
+    "description": "跨用户隔离-用户A无法获取用户B的笔记",
+    "scenario": "cross_user_get",
+    "expected_status": 404,
+    "expected_error": "笔记不存在"
+  },
+  {
+    "test_id": "cross_user_update_note",
+    "description": "跨用户隔离-用户A无法更新用户B的笔记",
+    "scenario": "cross_user_update",
+    "body": {
+      "title": "恶意修改",
+      "content": "不应该成功"
+    },
+    "expected_status": 500,
+    "expected_error": "更新失败"
+  },
+  {
+    "test_id": "cross_user_delete_note",
+    "description": "跨用户隔离-用户A无法删除用户B的笔记",
+    "scenario": "cross_user_delete",
+    "expected_status": 500,
+    "expected_error": "删除失败"
+  },
+  {
+    "test_id": "create_note_with_newlines",
+    "description": "创建笔记-内容含大量换行符",
+    "scenario": "create",
+    "body": {
+      "title": "多行笔记",
+      "content": "第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n第1行\n第2行\n第3行\n"
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  },
+  {
+    "test_id": "create_note_with_json_in_content",
+    "description": "创建笔记-内容包含JSON字符串",
+    "scenario": "create",
+    "body": {
+      "title": "JSON内容",
+      "content": "{\"key\": \"value\", \"nested\": {\"a\": 1}}"
+    },
+    "expected_status": 200,
+    "expected_key": "note"
+  }
+]

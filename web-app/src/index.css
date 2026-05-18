@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Light theme (default) ── */
+:root {
+  --bg: 245 245 247;
+  --bg-secondary: 232 232 237;
+  --fg: 29 29 31;
+  --fg-secondary: 110 110 115;
+  --card: 255 255 255;
+  --card-hover: 240 240 242;
+  --border: 210 210 215;
+  --border-light: 229 229 234;
+  --muted: 134 134 139;
+  --muted-fg: 110 110 115;
+  --primary: 0 122 255;
+  --primary-hover: 0 102 214;
+  --primary-fg: 255 255 255;
+  --danger: 255 59 48;
+  --danger-hover: 214 51 40;
+  --danger-fg: 255 255 255;
+  --success: 52 199 89;
+  --success-fg: 255 255 255;
+}
+
+/* ── Dark theme ── */
+.dark {
+  --bg: 26 26 24;
+  --bg-secondary: 34 32 29;
+  --fg: 239 230 213;
+  --fg-secondary: 160 152 128;
+  --card: 37 35 32;
+  --card-hover: 45 42 38;
+  --border: 58 53 48;
+  --border-light: 46 42 38;
+  --muted: 138 122 96;
+  --muted-fg: 138 122 96;
+  --primary: 245 158 11;
+  --primary-hover: 217 119 6;
+  --primary-fg: 26 26 24;
+  --danger: 239 68 68;
+  --danger-hover: 220 38 38;
+  --danger-fg: 255 255 255;
+  --success: 34 197 94;
+  --success-fg: 26 26 24;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    margin: 0;
+    font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont,
+      'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--border) / 0.8);
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--muted) / 0.8);
+    background-clip: content-box;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+    outline-style: solid;
+    border-radius: 8px;
+  }
+}
+
+@layer components {
+  .markdown-preview h1 { @apply text-2xl font-bold mt-8 mb-3 text-foreground tracking-tight; }
+  .markdown-preview h2 { @apply text-xl font-semibold mt-6 mb-2 text-foreground tracking-tight; }
+  .markdown-preview h3 { @apply text-lg font-semibold mt-5 mb-2 text-foreground; }
+  .markdown-preview h4 { @apply text-base font-semibold mt-4 mb-1 text-foreground; }
+  .markdown-preview p   { @apply my-2 leading-relaxed text-foreground-secondary; }
+  .markdown-preview ul,
+  .markdown-preview ol  { @apply my-2 pl-6 text-foreground-secondary; }
+  .markdown-preview li  { @apply my-1; }
+  .markdown-preview blockquote {
+    @apply border-l-[3px] border-primary/50 pl-4 my-4 text-muted-foreground;
+    font-style: normal;
+  }
+  .markdown-preview code {
+    @apply bg-primary/10 rounded-md px-1.5 py-0.5 text-sm font-mono text-primary;
+  }
+  .markdown-preview pre {
+    @apply bg-background-secondary rounded-2xl p-5 my-4 overflow-x-auto border border-border;
+  }
+  .markdown-preview pre code { @apply bg-transparent p-0 text-foreground text-sm; }
+  .markdown-preview a {
+    @apply text-primary decoration-primary/30 underline-offset-2 hover:underline;
+  }
+  .markdown-preview table { @apply w-full my-4 border-collapse; }
+  .markdown-preview th,
+  .markdown-preview td { @apply border border-border px-4 py-2.5 text-left text-sm; }
+  .markdown-preview th { @apply bg-background-secondary font-semibold text-foreground; }
+  .markdown-preview td { @apply text-foreground-secondary; }
+  .markdown-preview img { @apply max-w-full rounded-2xl my-3; }
+  .markdown-preview hr  { @apply border-border my-8; }
+  .markdown-preview strong { @apply text-foreground font-semibold; }
+  .markdown-preview input[type='checkbox'] { @apply mr-2 accent-primary; }
+}

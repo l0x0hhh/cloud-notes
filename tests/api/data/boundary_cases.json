@@ -1,0 +1,104 @@
+[
+  {
+    "test_id": "boundary_content_1_byte",
+    "description": "边界值-1字节内容",
+    "content_size": 1,
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_content_1kb",
+    "description": "边界值-1KB内容",
+    "content_size": 1024,
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_content_10kb",
+    "description": "边界值-10KB内容",
+    "content_size": 10240,
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_content_100kb",
+    "description": "边界值-100KB内容",
+    "content_size": 102400,
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_content_500kb",
+    "description": "边界值-500KB内容",
+    "content_size": 512000,
+    "expected_status": 200,
+    "slow": true
+  },
+  {
+    "test_id": "boundary_content_1mb",
+    "description": "边界值-1MB内容",
+    "content_size": 1048576,
+    "expected_status": 200,
+    "slow": true
+  },
+  {
+    "test_id": "boundary_content_3mb",
+    "description": "边界值-3MB内容",
+    "content_size": 3145728,
+    "expected_status": 200,
+    "slow": true
+  },
+  {
+    "test_id": "boundary_content_5mb_exact",
+    "description": "边界值-精确5MB内容（上限）",
+    "content_size": 5242880,
+    "expected_status": 200,
+    "slow": true
+  },
+  {
+    "test_id": "boundary_content_5mb_plus_1",
+    "description": "边界值-5MB+1字节内容（超过上限）",
+    "content_size": 5242881,
+    "expected_status": 413,
+    "slow": true
+  },
+  {
+    "test_id": "boundary_content_10mb",
+    "description": "边界值-10MB内容（远超上限）",
+    "content_size": 10485760,
+    "expected_status": 413,
+    "slow": true
+  },
+  {
+    "test_id": "boundary_title_1_char",
+    "description": "边界值-标题1个字符",
+    "title": "A",
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_title_empty",
+    "description": "边界值-标题为空字符串",
+    "title": "",
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_title_unicode_only",
+    "description": "边界值-标题纯Unicode特殊字符",
+    "title": "🔥🎉❤️💻🚀✨🌟",
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_title_sql_injection",
+    "description": "边界值-标题含SQL注入payload",
+    "title": "'; DROP TABLE notes; --",
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_content_xss_payload",
+    "description": "边界值-内容含XSS payload",
+    "content": "<img src=x onerror=alert(1)>",
+    "expected_status": 200
+  },
+  {
+    "test_id": "boundary_content_binary_simulated",
+    "description": "边界值-内容含null字节和二进制字符",
+    "content_includes_null": true,
+    "expected_status": 200
+  }
+]

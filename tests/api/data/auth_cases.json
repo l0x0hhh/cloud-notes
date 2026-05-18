@@ -1,0 +1,251 @@
+[
+  {
+    "test_id": "register_missing_username",
+    "description": "注册-缺少username字段",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "password": "test123"
+    },
+    "expected_status": 400,
+    "expected_error": "参数错误"
+  },
+  {
+    "test_id": "register_missing_password",
+    "description": "注册-缺少password字段",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "username": "testuser"
+    },
+    "expected_status": 400,
+    "expected_error": "参数错误"
+  },
+  {
+    "test_id": "register_empty_username",
+    "description": "注册-用户名为空字符串",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "username": "",
+      "password": "test123"
+    },
+    "expected_status": 400,
+    "expected_error": "用户名或密码不能为空"
+  },
+  {
+    "test_id": "register_empty_password",
+    "description": "注册-密码为空字符串",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "username": "user1",
+      "password": ""
+    },
+    "expected_status": 400,
+    "expected_error": "用户名或密码不能为空"
+  },
+  {
+    "test_id": "register_long_username",
+    "description": "注册-超长用户名（255字符）",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "password": "test123"
+    },
+    "expected_status": 200,
+    "expected_error": null
+  },
+  {
+    "test_id": "register_special_chars",
+    "description": "注册-用户名含特殊字符",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "username": "user@#$%^&*()",
+      "password": "test123"
+    },
+    "expected_status": 200,
+    "expected_error": null
+  },
+  {
+    "test_id": "register_unicode_username",
+    "description": "注册-用户名含Unicode字符",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "username": "用户🔥测试",
+      "password": "test123"
+    },
+    "expected_status": 200,
+    "expected_error": null
+  },
+  {
+    "test_id": "register_duplicate",
+    "description": "注册-重复用户名",
+    "method": "POST",
+    "path": "/register",
+    "body": {
+      "username": "__dup_test__",
+      "password": "test123"
+    },
+    "expected_status": 500,
+    "expected_error": "注册失败",
+    "setup": "先注册一次同名用户"
+  },
+  {
+    "test_id": "register_no_body",
+    "description": "注册-请求体为空",
+    "method": "POST",
+    "path": "/register",
+    "body": null,
+    "expected_status": 400,
+    "expected_error": "参数错误"
+  },
+  {
+    "test_id": "register_wrong_content_type",
+    "description": "注册-非JSON请求体",
+    "method": "POST",
+    "path": "/register",
+    "body": "not-json-string",
+    "expected_status": 400,
+    "expected_error": "参数错误",
+    "raw_body": true
+  },
+  {
+    "test_id": "login_missing_username",
+    "description": "登录-缺少username",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "password": "test123"
+    },
+    "expected_status": 400,
+    "expected_error": "参数错误"
+  },
+  {
+    "test_id": "login_missing_password",
+    "description": "登录-缺少password",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "testuser"
+    },
+    "expected_status": 400,
+    "expected_error": "参数错误"
+  },
+  {
+    "test_id": "login_user_not_exist",
+    "description": "登录-用户不存在",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "nonexistent_user_xyz",
+      "password": "test123"
+    },
+    "expected_status": 401,
+    "expected_error": "用户不存在"
+  },
+  {
+    "test_id": "login_wrong_password",
+    "description": "登录-密码错误",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "__login_test__",
+      "password": "wrong_password_xyz"
+    },
+    "expected_status": 401,
+    "expected_error": "密码错误",
+    "setup": "先注册用户 __login_test__"
+  },
+  {
+    "test_id": "auth_no_token",
+    "description": "鉴权-请求无Authorization头",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "expected_status": 401,
+    "expected_error": "未提供token",
+    "no_auth": true
+  },
+  {
+    "test_id": "auth_empty_token",
+    "description": "鉴权-Authorization头为空",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "headers": {
+      "Authorization": ""
+    },
+    "expected_status": 401,
+    "expected_error": "未提供token"
+  },
+  {
+    "test_id": "auth_wrong_token",
+    "description": "鉴权-错误Token（随机字符串）",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "headers": {
+      "Authorization": "Bearer this_is_a_wrong_token_xyz"
+    },
+    "expected_status": 401,
+    "expected_error": "token无效"
+  },
+  {
+    "test_id": "auth_expired_token",
+    "description": "鉴权-过期Token",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "use_expired_token": true,
+    "expected_status": 401,
+    "expected_error": "token无效"
+  },
+  {
+    "test_id": "auth_tampered_token",
+    "description": "鉴权-篡改Token",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "use_invalid_token": true,
+    "expected_status": 401,
+    "expected_error": "token无效"
+  },
+  {
+    "test_id": "auth_malformed_token",
+    "description": "鉴权-格式错误Token（非JWT格式）",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "use_malformed_token": true,
+    "expected_status": 401,
+    "expected_error": "token无效"
+  },
+  {
+    "test_id": "auth_bearer_only",
+    "description": "鉴权-只有Bearer前缀无Token值",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "headers": {
+      "Authorization": "Bearer"
+    },
+    "expected_status": 401,
+    "expected_error": "token格式错误"
+  },
+  {
+    "test_id": "auth_no_bearer_prefix",
+    "description": "鉴权-无Bearer前缀（直接传Token）",
+    "method": "GET",
+    "path": "/api/notes",
+    "body": null,
+    "headers": {
+      "Authorization": "some.jwt.token.here"
+    },
+    "expected_status": 401,
+    "expected_error": "token格式错误"
+  }
+]

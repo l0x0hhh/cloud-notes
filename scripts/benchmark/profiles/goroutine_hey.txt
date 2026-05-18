@@ -1,0 +1,74 @@
+goroutine profile: total 32
+25 @ 0x7ff60e30a34e 0x7ff60e2e7d85 0x7ff60e5408da 0x7ff60e311f01
+#	0x7ff60e5408d9	github.com/go-sql-driver/mysql.(*mysqlConn).startWatcher.func1+0x99	C:/Users/16776/go/pkg/mod/github.com/go-sql-driver/mysql@v1.8.1/connection.go:628
+
+1 @ 0x7ff60e2a04f1 0x7ff60e2e50e5 0x7ff60e30708a 0x7ff60ecefc05 0x7ff60e311f01
+#	0x7ff60e307089	runtime/pprof.readProfile+0x49		E:/GO/go/src/runtime/cpuprof.go:251
+#	0x7ff60ecefc04	runtime/pprof.profileWriter+0x44	E:/GO/go/src/runtime/pprof/pprof.go:930
+
+1 @ 0x7ff60e2c8371 0x7ff60e3090fd 0x7ff60ecef7b1 0x7ff60ecef5e5 0x7ff60ecec469 0x7ff60ed0676a 0x7ff60ed0ff6b 0x7ff60ecaf91f 0x7ff60ecbf511 0x7ff60ecaf91f 0x7ff60ecbe1ca 0x7ff60ecaf91f 0x7ff60ecbd19e 0x7ff60ecbcabc 0x7ff60e6d56ae 0x7ff60e6c6db0 0x7ff60e311f01
+#	0x7ff60ecef7b0	runtime/pprof.writeRuntimeProfile+0xb0				E:/GO/go/src/runtime/pprof/pprof.go:851
+#	0x7ff60ecef5e4	runtime/pprof.writeGoroutine+0x44				E:/GO/go/src/runtime/pprof/pprof.go:784
+#	0x7ff60ecec468	runtime/pprof.(*Profile).WriteTo+0x148				E:/GO/go/src/runtime/pprof/pprof.go:408
+#	0x7ff60ed06769	net/http/pprof.handler.ServeHTTP+0x529				E:/GO/go/src/net/http/pprof/pprof.go:273
+#	0x7ff60ed0ff6a	cloud-notes/router.SetupRouter.WrapH.func11+0x4a		C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/utils.go:56
+#	0x7ff60ecaf91e	github.com/gin-gonic/gin.(*Context).Next+0x5e			C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+#	0x7ff60ecbf510	github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1+0x50	C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/recovery.go:90
+#	0x7ff60ecaf91e	github.com/gin-gonic/gin.(*Context).Next+0x5e			C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+#	0x7ff60ecbe1c9	github.com/gin-gonic/gin.LoggerWithConfig.func1+0xc9		C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/logger.go:282
+#	0x7ff60ecaf91e	github.com/gin-gonic/gin.(*Context).Next+0x5e			C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+#	0x7ff60ecbd19d	github.com/gin-gonic/gin.(*Engine).handleHTTPRequest+0x45d	C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722
+#	0x7ff60ecbcabb	github.com/gin-gonic/gin.(*Engine).ServeHTTP+0x1db		C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+#	0x7ff60e6d56ad	net/http.serverHandler.ServeHTTP+0x8d				E:/GO/go/src/net/http/server.go:3311
+#	0x7ff60e6c6daf	net/http.(*conn).serve+0x64f					E:/GO/go/src/net/http/server.go:2073
+
+1 @ 0x7ff60e30a34e 0x7ff60e2cb8d7 0x7ff60e309485 0x7ff60e38c447 0x7ff60e38d70c 0x7ff60e38dd65 0x7ff60e38e96e 0x7ff60e416c65 0x7ff60e425cc5 0x7ff60e6c0993 0x7ff60e311f01
+#	0x7ff60e309484	internal/poll.runtime_pollWait+0x84		E:/GO/go/src/runtime/netpoll.go:351
+#	0x7ff60e38c446	internal/poll.(*pollDesc).wait+0x26		E:/GO/go/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff60e38d70b	internal/poll.(*FD).waitIO+0x4b			E:/GO/go/src/internal/poll/fd_windows.go:228
+#	0x7ff60e38dd64	internal/poll.(*FD).execIO+0x364		E:/GO/go/src/internal/poll/fd_windows.go:311
+#	0x7ff60e38e96d	internal/poll.(*FD).Read+0x20d			E:/GO/go/src/internal/poll/fd_windows.go:600
+#	0x7ff60e416c64	net.(*netFD).Read+0x24				E:/GO/go/src/net/fd_posix.go:68
+#	0x7ff60e425cc4	net.(*conn).Read+0x44				E:/GO/go/src/net/net.go:196
+#	0x7ff60e6c0992	net/http.(*connReader).backgroundRead+0x32	E:/GO/go/src/net/http/server.go:702
+
+1 @ 0x7ff60e30a34e 0x7ff60e2cb8d7 0x7ff60e309485 0x7ff60e38c447 0x7ff60e38d70c 0x7ff60e38dd65 0x7ff60e392c79 0x7ff60e392ff0 0x7ff60e418c2b 0x7ff60e42e51b 0x7ff60e42d690 0x7ff60e6cc5ac 0x7ff60e6cc192 0x7ff60ecbb645 0x7ff60ed10b17 0x7ff60e2d4907 0x7ff60e311f01
+#	0x7ff60e309484	internal/poll.runtime_pollWait+0x84		E:/GO/go/src/runtime/netpoll.go:351
+#	0x7ff60e38c446	internal/poll.(*pollDesc).wait+0x26		E:/GO/go/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff60e38d70b	internal/poll.(*FD).waitIO+0x4b			E:/GO/go/src/internal/poll/fd_windows.go:228
+#	0x7ff60e38dd64	internal/poll.(*FD).execIO+0x364		E:/GO/go/src/internal/poll/fd_windows.go:311
+#	0x7ff60e392c78	internal/poll.(*FD).acceptOne+0x78		E:/GO/go/src/internal/poll/fd_windows.go:1129
+#	0x7ff60e392fef	internal/poll.(*FD).Accept+0x18f		E:/GO/go/src/internal/poll/fd_windows.go:1164
+#	0x7ff60e418c2a	net.(*netFD).accept+0x4a			E:/GO/go/src/net/fd_windows.go:202
+#	0x7ff60e42e51a	net.(*TCPListener).accept+0x1a			E:/GO/go/src/net/tcpsock_posix.go:159
+#	0x7ff60e42d68f	net.(*TCPListener).Accept+0x2f			E:/GO/go/src/net/tcpsock.go:387
+#	0x7ff60e6cc5ab	net/http.(*Server).Serve+0x30b			E:/GO/go/src/net/http/server.go:3434
+#	0x7ff60e6cc191	net/http.(*Server).ListenAndServe+0x71		E:/GO/go/src/net/http/server.go:3360
+#	0x7ff60ecbb644	github.com/gin-gonic/gin.(*Engine).Run+0x264	C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:554
+#	0x7ff60ed10b16	main.main+0x156					E:/cloud-notes/main.go:19
+#	0x7ff60e2d4906	runtime.main+0x2c6				E:/GO/go/src/runtime/proc.go:290
+
+1 @ 0x7ff60e30a34e 0x7ff60e2e7d85 0x7ff60e4986c9 0x7ff60e311f01
+#	0x7ff60e4986c8	database/sql.(*DB).connectionOpener+0x88	E:/GO/go/src/database/sql/sql.go:1261
+
+1 @ 0x7ff60e30a34e 0x7ff60e2e7d85 0x7ff60ed04f15 0x7ff60ed05685 0x7ff60ed10444 0x7ff60ecaf91f 0x7ff60ecbf511 0x7ff60ecaf91f 0x7ff60ecbe1ca 0x7ff60ecaf91f 0x7ff60ecbd19e 0x7ff60ecbcabc 0x7ff60e6d56ae 0x7ff60e6c6db0 0x7ff60e311f01
+#	0x7ff60ed04f14	net/http/pprof.sleep+0x94					E:/GO/go/src/net/http/pprof/pprof.go:118
+#	0x7ff60ed05684	net/http/pprof.Profile+0x344					E:/GO/go/src/net/http/pprof/pprof.go:164
+#	0x7ff60ed10443	cloud-notes/router.SetupRouter.WrapF.func5+0x43			C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/utils.go:49
+#	0x7ff60ecaf91e	github.com/gin-gonic/gin.(*Context).Next+0x5e			C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+#	0x7ff60ecbf510	github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1+0x50	C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/recovery.go:90
+#	0x7ff60ecaf91e	github.com/gin-gonic/gin.(*Context).Next+0x5e			C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+#	0x7ff60ecbe1c9	github.com/gin-gonic/gin.LoggerWithConfig.func1+0xc9		C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/logger.go:282
+#	0x7ff60ecaf91e	github.com/gin-gonic/gin.(*Context).Next+0x5e			C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+#	0x7ff60ecbd19d	github.com/gin-gonic/gin.(*Engine).handleHTTPRequest+0x45d	C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722
+#	0x7ff60ecbcabb	github.com/gin-gonic/gin.(*Engine).ServeHTTP+0x1db		C:/Users/16776/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+#	0x7ff60e6d56ad	net/http.serverHandler.ServeHTTP+0x8d				E:/GO/go/src/net/http/server.go:3311
+#	0x7ff60e6c6daf	net/http.(*conn).serve+0x64f					E:/GO/go/src/net/http/server.go:2073
+
+1 @ 0x7ff60e38e057 0x7ff60e38e96e 0x7ff60e416c65 0x7ff60e425cc5 0x7ff60e6c0993 0x7ff60e311f01
+#	0x7ff60e38e056	internal/poll.(*FD).execIO+0x656		E:/GO/go/src/internal/poll/fd_windows.go:268
+#	0x7ff60e38e96d	internal/poll.(*FD).Read+0x20d			E:/GO/go/src/internal/poll/fd_windows.go:600
+#	0x7ff60e416c64	net.(*netFD).Read+0x24				E:/GO/go/src/net/fd_posix.go:68
+#	0x7ff60e425cc4	net.(*conn).Read+0x44				E:/GO/go/src/net/net.go:196
+#	0x7ff60e6c0992	net/http.(*connReader).backgroundRead+0x32	E:/GO/go/src/net/http/server.go:702
+
