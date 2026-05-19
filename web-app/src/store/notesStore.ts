@@ -102,8 +102,8 @@ export const useNotesStore = create<NotesState>((set, get) => ({
   },
 
   updateNote: async () => {
-    const { selectedId, draft } = get()
-    if (!selectedId) return false
+    const { selectedId, draft, saving } = get()
+    if (!selectedId || saving) return false
     set({ saving: true, error: null })
     try {
       await api.updateNote(selectedId, draft)

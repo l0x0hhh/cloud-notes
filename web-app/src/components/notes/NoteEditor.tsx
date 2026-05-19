@@ -39,15 +39,6 @@ export function NoteEditor() {
     }
   }, [debouncedDraft, selectedId])
 
-  // Auto-save to backend after 5s of inactivity
-  useEffect(() => {
-    if (!selectedId || saving) return
-    const timer = setTimeout(() => {
-      updateNote()
-    }, 5000)
-    return () => clearTimeout(timer)
-  }, [debouncedDraft, selectedId, saving, updateNote])
-
   // Show errors as toasts
   useEffect(() => {
     if (error) {
@@ -98,13 +89,23 @@ export function NoteEditor() {
   }
 
   const handleSave = async () => {
+    if (saving) return
     const ok = await updateNote()
-    if (ok) toast('success', '笔记已保存')
+    if (ok) {
+      toast('success', '笔记已保存')
+    } else {
+      toast('error', '保存失败，请重试')
+    }
   }
 
   const handleCreateNew = async () => {
+    if (saving) return
     const id = await createNote()
-    if (id) toast('success', '笔记已创建')
+    if (id) {
+      toast('success', '笔记已创建')
+    } else {
+      toast('error', '创建失败，请重试')
+    }
   }
 
   const handleToolbarInsert = (before: string, after?: string, placeholder?: string) => {
