@@ -2,48 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Light theme (default) ── */
+/* ── Light theme (YYsuni-inspired: soft blue, glass, warm text) ── */
 :root {
-  --bg: 245 245 247;
-  --bg-secondary: 232 232 237;
-  --fg: 29 29 31;
-  --fg-secondary: 110 110 115;
+  --bg: 220 232 238;
+  --bg-secondary: 210 224 232;
+  --fg: 61 79 82;
+  --fg-secondary: 123 136 142;
   --card: 255 255 255;
-  --card-hover: 240 240 242;
-  --border: 210 210 215;
-  --border-light: 229 229 234;
-  --muted: 134 134 139;
-  --muted-fg: 110 110 115;
-  --primary: 0 122 255;
-  --primary-hover: 0 102 214;
-  --primary-fg: 255 255 255;
-  --danger: 255 59 48;
-  --danger-hover: 214 51 40;
-  --danger-fg: 255 255 255;
-  --success: 52 199 89;
-  --success-fg: 255 255 255;
-}
+  --card-hover: 245 248 250;
+  --border: 255 255 255;
+  --border-light: 235 240 244;
+  --muted: 160 170 176;
+  --muted-fg: 123 136 142;
 
-/* ── Dark theme ── */
-.dark {
-  --bg: 26 26 24;
-  --bg-secondary: 34 32 29;
-  --fg: 239 230 213;
-  --fg-secondary: 160 152 128;
-  --card: 37 35 32;
-  --card-hover: 45 42 38;
-  --border: 58 53 48;
-  --border-light: 46 42 38;
-  --muted: 138 122 96;
-  --muted-fg: 138 122 96;
-  --primary: 245 158 11;
-  --primary-hover: 217 119 6;
-  --primary-fg: 26 26 24;
+  --brand: 53 191 171;
+  --brand-secondary: 31 201 231;
+  --brand-foreground: 255 255 255;
+
   --danger: 239 68 68;
   --danger-hover: 220 38 38;
   --danger-fg: 255 255 255;
   --success: 34 197 94;
-  --success-fg: 26 26 24;
+  --success-fg: 255 255 255;
+
+  --card-glass: 255 255 255;
+  --card-glass-alpha: 0.60;
+  --card-shadow: 0 40px 50px -32px rgba(0,0,0,0.05), inset 0 0 20px rgba(255,255,255,0.25);
+}
+
+/* ── Dark theme ── */
+.dark {
+  --bg: 22 26 30;
+  --bg-secondary: 30 34 40;
+  --fg: 226 222 215;
+  --fg-secondary: 148 142 132;
+  --card: 40 44 50;
+  --card-hover: 48 52 58;
+  --border: 60 64 70;
+  --border-light: 46 48 54;
+  --muted: 110 106 98;
+  --muted-fg: 148 142 132;
+
+  --brand: 53 191 171;
+  --brand-secondary: 31 201 231;
+  --brand-foreground: 22 26 30;
+
+  --danger: 248 113 113;
+  --danger-hover: 239 68 68;
+  --danger-fg: 22 26 30;
+  --success: 74 222 128;
+  --success-fg: 22 26 30;
+
+  --card-glass: 40 44 50;
+  --card-glass-alpha: 0.70;
+  --card-shadow: 0 40px 50px -32px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.04);
 }
 
 @layer base {
@@ -52,63 +64,122 @@
   body {
     @apply bg-background text-foreground antialiased;
     margin: 0;
-    font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont,
-      'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-family: 'PingFang SC', -apple-system, system-ui, 'Segoe UI', Roboto,
+      Ubuntu, Cantarell, 'Noto Sans', sans-serif, BlinkMacSystemFont,
+      'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft YaHei', Arial;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    background: rgb(var(--border) / 0.8);
+    background: rgb(var(--muted) / 0.35);
     border-radius: 20px;
-    border: 2px solid transparent;
-    background-clip: content-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--muted) / 0.8);
-    background-clip: content-box;
+    background: rgb(var(--muted) / 0.55);
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
+    @apply outline-2 outline-offset-2;
     outline-style: solid;
+    outline-color: rgb(var(--brand));
     border-radius: 8px;
   }
 }
 
+/* ── Utility classes (YYsuni-inspired) ── */
+@layer utilities {
+  .card {
+    background: rgb(var(--card-glass) / var(--card-glass-alpha));
+    border: 1px solid rgb(var(--border) / 0.8);
+    border-radius: 28px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .card-sm {
+    border-radius: 20px;
+  }
+  .card-lg {
+    border-radius: 40px;
+  }
+
+  .text-linear {
+    background: linear-gradient(
+      to right bottom,
+      rgb(var(--brand)) 0%,
+      rgb(var(--brand-secondary)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-linear {
+    background: linear-gradient(
+      to right bottom,
+      rgb(var(--brand)) 0%,
+      rgb(var(--brand-secondary)) 100%
+    );
+    color: rgb(var(--brand-foreground));
+  }
+
+  .shadow-soft {
+    box-shadow: 0 40px 50px -32px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* ── Markdown Preview ── */
 @layer components {
-  .markdown-preview h1 { @apply text-2xl font-bold mt-8 mb-3 text-foreground tracking-tight; }
-  .markdown-preview h2 { @apply text-xl font-semibold mt-6 mb-2 text-foreground tracking-tight; }
-  .markdown-preview h3 { @apply text-lg font-semibold mt-5 mb-2 text-foreground; }
+  .markdown-preview h1 {
+    @apply text-2xl font-bold mt-8 mb-3 text-foreground tracking-tight;
+    font-family: 'Averia Gruesa Libre', 'PingFang SC', sans-serif;
+  }
+  .markdown-preview h2 {
+    @apply text-xl font-semibold mt-6 mb-2 text-foreground tracking-tight;
+    font-family: 'Averia Gruesa Libre', 'PingFang SC', sans-serif;
+  }
+  .markdown-preview h3 {
+    @apply text-lg font-semibold mt-5 mb-2 text-foreground;
+    font-family: 'Averia Gruesa Libre', 'PingFang SC', sans-serif;
+  }
   .markdown-preview h4 { @apply text-base font-semibold mt-4 mb-1 text-foreground; }
-  .markdown-preview p   { @apply my-2 leading-relaxed text-foreground-secondary; }
+  .markdown-preview p { @apply my-2 leading-relaxed text-foreground-secondary; }
   .markdown-preview ul,
-  .markdown-preview ol  { @apply my-2 pl-6 text-foreground-secondary; }
-  .markdown-preview li  { @apply my-1; }
+  .markdown-preview ol { @apply my-2 pl-6 text-foreground-secondary; }
+  .markdown-preview li { @apply my-1; }
   .markdown-preview blockquote {
-    @apply border-l-[3px] border-primary/50 pl-4 my-4 text-muted-foreground;
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(to bottom, rgb(var(--brand)), rgb(var(--brand-secondary))) 1;
+    @apply pl-4 my-4 text-muted-foreground;
     font-style: normal;
   }
   .markdown-preview code {
-    @apply bg-primary/10 rounded-md px-1.5 py-0.5 text-sm font-mono text-primary;
+    background: rgb(var(--brand) / 0.1);
+    @apply rounded-md px-1.5 py-0.5 text-sm font-mono;
+    color: rgb(var(--brand));
   }
   .markdown-preview pre {
-    @apply bg-background-secondary rounded-2xl p-5 my-4 overflow-x-auto border border-border;
+    background: rgb(var(--bg-secondary) / 0.7);
+    @apply rounded-2xl p-5 my-4 overflow-x-auto;
+    border: 1px solid rgb(var(--border) / 0.6);
+    backdrop-filter: blur(4px);
   }
   .markdown-preview pre code { @apply bg-transparent p-0 text-foreground text-sm; }
   .markdown-preview a {
-    @apply text-primary decoration-primary/30 underline-offset-2 hover:underline;
+    color: rgb(var(--brand));
+    @apply decoration-brand/30 underline-offset-2 hover:underline;
   }
   .markdown-preview table { @apply w-full my-4 border-collapse; }
   .markdown-preview th,
-  .markdown-preview td { @apply border border-border px-4 py-2.5 text-left text-sm; }
-  .markdown-preview th { @apply bg-background-secondary font-semibold text-foreground; }
+  .markdown-preview td { @apply border border-border/60 px-4 py-2.5 text-left text-sm; }
+  .markdown-preview th { @apply bg-background-secondary/60 font-semibold text-foreground; }
   .markdown-preview td { @apply text-foreground-secondary; }
   .markdown-preview img { @apply max-w-full rounded-2xl my-3; }
-  .markdown-preview hr  { @apply border-border my-8; }
+  .markdown-preview hr { @apply border-border/60 my-8; }
   .markdown-preview strong { @apply text-foreground font-semibold; }
-  .markdown-preview input[type='checkbox'] { @apply mr-2 accent-primary; }
+  .markdown-preview input[type='checkbox'] { @apply mr-2; accent-color: rgb(var(--brand)); }
 }

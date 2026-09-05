@@ -1,6 +1,7 @@
 import pytest
 from common.request_util import send_request
 
+
 @pytest.fixture(scope="session")
 def token():
     data = {

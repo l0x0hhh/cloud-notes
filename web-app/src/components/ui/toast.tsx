@@ -31,7 +31,7 @@ const icons: Record<ToastType, typeof CheckCircle> = {
 const styles: Record<ToastType, string> = {
   success: 'border-success/20 bg-success/10 text-success',
   error: 'border-danger/20 bg-danger/10 text-danger',
-  info: 'border-primary/20 bg-primary/10 text-primary',
+  info: 'border-brand/20 bg-brand/10 text-brand',
 }
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
@@ -75,7 +75,7 @@ function ToastItem({
   return (
     <div
       className={cn(
-        'pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl border shadow-apple-lg animate-slide-up min-w-[300px] max-w-[420px]',
+        'pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl border shadow-soft-lg animate-slide-up min-w-[300px] max-w-[420px]',
         'bg-card/95 backdrop-blur-xl',
         styles[toast.type]
       )}

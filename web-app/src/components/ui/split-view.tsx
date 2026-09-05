@@ -86,12 +86,12 @@ export function SplitView({
       <div
         className={cn(
           'w-2 shrink-0 cursor-col-resize relative group',
-          'bg-transparent hover:bg-primary/10 transition-colors',
+          'bg-transparent hover:bg-brand/10 transition-colors',
           'flex items-center justify-center'
         )}
         onMouseDown={onMouseDown}
       >
-        <div className="w-0.5 h-10 rounded-full bg-border group-hover:bg-primary/40 transition-colors" />
+        <div className="w-0.5 h-10 rounded-full bg-border group-hover:bg-brand/40 transition-colors" />
       </div>
 
       <div style={{ width: `${(1 - ratio) * 100}%` }} className="h-full overflow-hidden">

@@ -27,7 +27,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             'w-full rounded-xl border bg-card px-4 py-2.5 text-sm text-foreground',
             'placeholder:text-muted',
             'transition-all duration-200',
-            'focus:border-primary focus:ring-[3px] focus:ring-primary/15 focus:bg-card focus:outline-none',
+            'focus:border-brand focus:ring-[3px] focus:ring-brand/15 focus:bg-card focus:outline-none',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             error
               ? 'border-danger focus:border-danger focus:ring-danger/15'
@@ -74,7 +74,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             'w-full rounded-xl border bg-card px-4 py-3 text-sm text-foreground resize-y min-h-[200px]',
             'placeholder:text-muted font-mono',
             'transition-all duration-200',
-            'focus:border-primary focus:ring-[3px] focus:ring-primary/15 focus:bg-card focus:outline-none',
+            'focus:border-brand focus:ring-[3px] focus:ring-brand/15 focus:bg-card focus:outline-none',
             'disabled:opacity-50 disabled:cursor-not-allowed',
             error
               ? 'border-danger focus:border-danger focus:ring-danger/15'

@@ -4,6 +4,7 @@ import { AuthPage } from '@/pages/AuthPage'
 import { WorkspacePage } from '@/pages/WorkspacePage'
 import { ToastProvider } from '@/components/ui/toast'
 import { ThemeProvider } from '@/hooks/useTheme'
+import { ParticlesBackground } from '@/components/ui/ParticlesBackground'
 
 export default function App() {
   const token = useAuthStore((s) => s.token)
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <ToastProvider>
+        <ParticlesBackground />
         {token ? <WorkspacePage /> : <AuthPage />}
       </ToastProvider>
     </ThemeProvider>

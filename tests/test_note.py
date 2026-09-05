@@ -1,9 +1,10 @@
 from common.request_util import send_request
 
+
 def test_create_note(token):
     data = {
-        "title": "测试",
-        "content": "内容"
+        "title": "你好CC",
+        "content": "## 我是一个测试笔记"
     }
 
     res = send_request("POST", "/api/notes", token=token, json=data)

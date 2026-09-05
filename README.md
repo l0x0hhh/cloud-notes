@@ -67,7 +67,7 @@ CREATE DATABASE cloud_notes CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ### 3. 启动后端
 
 ```powershell
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 
 # 方式一：直接运行编译好的 exe
 .\cloud-notes.exe
@@ -84,7 +84,7 @@ make run-server
 ### 4. 启动前端（可选）
 
 ```powershell
-cd E:\cloud-notes\web-app
+cd E:\AIstudy\project\cloud-notes\web-app
 npm install
 npm run dev
 ```
@@ -96,7 +96,7 @@ npm run dev
 Go 层的单元测试使用 mock store，**不依赖数据库和运行中的服务**：
 
 ```powershell
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 go test ./... -v
 ```
 
@@ -105,7 +105,7 @@ go test ./... -v
 需要**后端和 MySQL 都在运行**：
 
 ```powershell
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 .\.venv\Scripts\activate           # 激活虚拟环境
 cd tests\api
 pip install -r requirements.txt    # 首次安装依赖

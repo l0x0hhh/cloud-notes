@@ -20,18 +20,20 @@ export function NoteCard({ note, isActive, onClick }: NoteCardProps) {
     <button
       onClick={onClick}
       className={cn(
-        'w-full text-left rounded-2xl p-4 transition-all duration-200',
-        'hover:bg-card-hover active:scale-[0.98]',
+        'w-full text-left rounded-[20px] p-4 transition-all duration-300',
+        'hover:scale-[1.02] active:scale-[0.98]',
         isActive
-          ? 'bg-card shadow-apple-md ring-1 ring-primary/30'
-          : 'bg-transparent border border-transparent hover:border-border'
+          ? 'card shadow-soft-md border-brand/20'
+          : 'border border-transparent hover:bg-card-glass/40'
       )}
     >
       <div className="flex items-start gap-3">
         <div
           className={cn(
-            'p-2 rounded-xl shrink-0 mt-0.5 transition-colors',
-            isActive ? 'bg-primary/15 text-primary' : 'bg-background-secondary text-muted'
+            'p-2 rounded-xl shrink-0 mt-0.5 transition-colors duration-300',
+            isActive
+              ? 'bg-linear text-brand-foreground'
+              : 'bg-background-secondary/60 text-muted'
           )}
         >
           <FileText className="w-4 h-4" />

@@ -1,0 +1,133 @@
+- generic [active] [ref=e1]:
+  - region "Notifications alt+T"
+  - main [ref=e4]:
+    - generic [ref=e6]:
+      - img "wall art" [ref=e8]
+      - generic [ref=e9]:
+        - link [ref=e10] [cursor=pointer]:
+          - /url: /live2d
+          - img [ref=e11]
+        - heading "Good Afternoon I'm Suni , Nice to meet you!" [level=1] [ref=e12]:
+          - text: Good Afternoon
+          - text: I'm Suni , Nice to
+          - text: meet you!
+      - generic [ref=e14] [cursor=pointer]:
+        - img [ref=e15]
+        - img [ref=e23]
+        - img [ref=e34]
+        - img [ref=e42]
+      - generic [ref=e50]:
+        - heading "2026/5/19 周二" [level=3] [ref=e51]
+        - list [ref=e52]:
+          - listitem [ref=e53]: 一
+          - listitem [ref=e54]: 二
+          - listitem [ref=e55]: 三
+          - listitem [ref=e56]: 四
+          - listitem [ref=e57]: 五
+          - listitem [ref=e58]: 六
+          - listitem [ref=e59]: 日
+          - listitem [ref=e60]
+          - listitem [ref=e61]
+          - listitem [ref=e62]
+          - listitem [ref=e63]
+          - listitem [ref=e64]: "1"
+          - listitem [ref=e65]: "2"
+          - listitem [ref=e66]: "3"
+          - listitem [ref=e67]: "4"
+          - listitem [ref=e68]: "5"
+          - listitem [ref=e69]: "6"
+          - listitem [ref=e70]: "7"
+          - listitem [ref=e71]: "8"
+          - listitem [ref=e72]: "9"
+          - listitem [ref=e73]: "10"
+          - listitem [ref=e74]: "11"
+          - listitem [ref=e75]: "12"
+          - listitem [ref=e76]: "13"
+          - listitem [ref=e77]: "14"
+          - listitem [ref=e78]: "15"
+          - listitem [ref=e79]: "16"
+          - listitem [ref=e80]: "17"
+          - listitem [ref=e81]: "18"
+          - listitem [ref=e82]: "19"
+          - listitem [ref=e83]: "20"
+          - listitem [ref=e84]: "21"
+          - listitem [ref=e85]: "22"
+          - listitem [ref=e86]: "23"
+          - listitem [ref=e87]: "24"
+          - listitem [ref=e88]: "25"
+          - listitem [ref=e89]: "26"
+          - listitem [ref=e90]: "27"
+          - listitem [ref=e91]: "28"
+          - listitem [ref=e92]: "29"
+          - listitem [ref=e93]: "30"
+          - listitem [ref=e94]: "31"
+      - generic [ref=e95]:
+        - button [ref=e96] [cursor=pointer]:
+          - img [ref=e97]
+        - link "稀土掘金" [ref=e100] [cursor=pointer]:
+          - /url: https://juejin.cn/user/2427311675422382
+          - img [ref=e101]
+          - text: 稀土掘金
+        - link "Github" [ref=e104] [cursor=pointer]:
+          - /url: https://github.com/yysuni
+          - img [ref=e105]
+          - text: Github
+      - generic [ref=e108]:
+        - heading "随机推荐" [level=2] [ref=e109]
+        - link "Ai lman Ai lman 类 Magic UI，但是感觉差点意思。可作为看完 Magic 意犹未尽时闲看。" [ref=e110] [cursor=pointer]:
+          - /url: /share
+          - generic [ref=e111]:
+            - img "Ai lman" [ref=e113]
+            - heading "Ai lman" [level=3] [ref=e114]
+          - paragraph [ref=e115]: 类 Magic UI，但是感觉差点意思。可作为看完 Magic 意犹未尽时闲看。
+      - generic [ref=e116]:
+        - heading "最新文章" [level=2] [ref=e117]
+        - link "cover 游戏工具-异环自动钓鱼 写一款游戏自动工具，做游戏相关的程序 2026/5/9" [ref=e118] [cursor=pointer]:
+          - /url: /blog/yh-fish
+          - img "cover" [ref=e119]
+          - generic [ref=e120]:
+            - heading "游戏工具-异环自动钓鱼" [level=3] [ref=e121]
+            - paragraph [ref=e122]: 写一款游戏自动工具，做游戏相关的程序
+            - paragraph [ref=e123]: 2026/5/9
+      - generic [ref=e124]:
+        - button "写文章" [ref=e125] [cursor=pointer]:
+          - img [ref=e126]
+          - generic [ref=e128]: 写文章
+        - button [ref=e129] [cursor=pointer]:
+          - img [ref=e130]
+      - button "Like this post" [ref=e133] [cursor=pointer]:
+        - img [ref=e135]
+    - generic [ref=e137]:
+      - link "avatar YYsuni (开发中)" [ref=e138] [cursor=pointer]:
+        - /url: /
+        - img "avatar" [ref=e139]
+        - generic [ref=e140]: YYsuni
+        - generic [ref=e141]: (开发中)
+      - generic [ref=e142]: General
+      - generic [ref=e143]:
+        - link "近期文章" [ref=e145] [cursor=pointer]:
+          - /url: /blog
+          - img [ref=e147]
+          - generic [ref=e149]: 近期文章
+        - link "我的项目" [ref=e150] [cursor=pointer]:
+          - /url: /projects
+          - img [ref=e152]
+          - generic [ref=e154]: 我的项目
+        - link "关于网站" [ref=e155] [cursor=pointer]:
+          - /url: /about
+          - img [ref=e157]
+          - generic [ref=e160]: 关于网站
+        - link "推荐分享" [ref=e161] [cursor=pointer]:
+          - /url: /share
+          - img [ref=e163]
+          - generic [ref=e165]: 推荐分享
+        - link "优秀博客" [ref=e166] [cursor=pointer]:
+          - /url: /bloggers
+          - img [ref=e168]
+          - generic [ref=e170]: 优秀博客
+    - generic [ref=e171]:
+      - img [ref=e172]
+      - generic [ref=e176]: Close To You
+      - button [ref=e178] [cursor=pointer]:
+        - img [ref=e179]
+  - alert [ref=e5]

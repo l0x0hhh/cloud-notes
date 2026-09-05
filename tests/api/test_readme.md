@@ -33,14 +33,14 @@ CREATE DATABASE cloud_notes CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 默认连接：`root:root@127.0.0.1:3306/cloud_notes`
 
-如果密码不同，修改 `E:\cloud-notes\config\db.go` 中的 DSN 字符串。
+如果密码不同，修改 `E:\AIstudy\project\cloud-notes\config\db.go` 中的 DSN 字符串。
 
 ### 2. Go 后端运行中
 
 打开一个新的 PowerShell 终端，在项目根目录启动后端：
 
 ```powershell
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 go run main.go
 ```
 
@@ -53,7 +53,7 @@ go run main.go
 如果项目还没有虚拟环境：
 
 ```powershell
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 uv venv
 .\.venv\Scripts\activate
 ```
@@ -64,7 +64,7 @@ uv venv
 
 ```powershell
 # 激活虚拟环境
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 .\.venv\Scripts\activate
 
 # 安装依赖
@@ -88,7 +88,7 @@ uv pip install -r tests\api\requirements.txt
 ### 运行全部测试
 
 ```powershell
-cd E:\cloud-notes\tests\api
+cd E:\AIstudy\project\cloud-notes\tests\api
 pytest -v --html=report.html --self-contained-html
 ```
 
@@ -145,7 +145,7 @@ pytest -v --html=report.html --self-contained-html
 Go 层的单元测试不依赖数据库和后端运行，可以随时执行：
 
 ```powershell
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 go test ./... -v
 ```
 
@@ -238,11 +238,11 @@ pip install -r requirements.txt
 # 确保 cloud_notes 数据库已创建
 
 # 终端 2：启动后端
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 go run main.go
 
 # 终端 3：运行测试
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 .\.venv\Scripts\activate
 cd tests\api
 pytest -v --html=report.html --self-contained-html

@@ -63,7 +63,7 @@ export function RegisterForm({ onSwitchToLogin }: RegisterFormProps) {
         error={errors.password?.message}
         {...register('password')}
       />
-      <Button type="submit" className="w-full" loading={loading}>
+      <Button type="submit" className="w-full bg-linear border-0 shadow-soft-sm" loading={loading}>
         <UserPlus className="w-4 h-4" />
         注册
       </Button>

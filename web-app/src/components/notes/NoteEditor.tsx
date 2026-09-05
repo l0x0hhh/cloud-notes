@@ -27,7 +27,6 @@ export function NoteEditor() {
 
   const debouncedDraft = useDebounce(draft, 2000)
 
-  // Auto-save draft to localStorage
   useEffect(() => {
     if (selectedId) {
       try {
@@ -39,14 +38,12 @@ export function NoteEditor() {
     }
   }, [debouncedDraft, selectedId])
 
-  // Show errors as toasts
   useEffect(() => {
     if (error) {
       toast('error', error)
     }
   }, [error, toast])
 
-  // Keyboard shortcut: Ctrl+S to save
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
@@ -74,11 +71,11 @@ export function NoteEditor() {
 
   if (!selectedId) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-muted gap-4 p-8">
-        <div className="p-4 rounded-2xl bg-background-secondary">
-          <FileText className="w-16 h-16 opacity-15" />
+      <div className="flex flex-col items-center justify-center h-full gap-4 p-8">
+        <div className="p-4 rounded-[28px] bg-card-glass/40 backdrop-blur-sm">
+          <FileText className="w-16 h-16 text-muted/30" />
         </div>
-        <p className="text-lg font-semibold text-foreground tracking-tight">
+        <p className="text-lg font-semibold text-foreground tracking-tight font-display">
           选择或创建一条笔记
         </p>
         <p className="text-sm text-muted-foreground text-center max-w-xs">
@@ -127,35 +124,31 @@ export function NoteEditor() {
 
   const editorPane = (
     <div className="flex flex-col h-full">
-      {/* Title input */}
       <div className="px-4 pt-4 pb-2">
         <input
           value={draft.title}
           onChange={(e) => setDraft({ title: e.target.value })}
           placeholder="笔记标题"
-          className="w-full text-lg font-semibold bg-transparent border-0 text-foreground placeholder:text-muted focus:outline-none px-0 py-1"
+          className="w-full text-lg font-semibold bg-transparent border-0 text-foreground placeholder:text-muted/50 focus:outline-none px-0 py-1 font-display"
         />
       </div>
 
-      {/* Toolbar */}
       <div className="px-4 pb-2">
         <Toolbar textareaRef={textareaRef} onInsert={handleToolbarInsert} />
       </div>
 
-      {/* Textarea */}
       <div className="flex-1 px-4 overflow-hidden">
         <textarea
           ref={textareaRef}
           value={draft.content}
           onChange={(e) => setDraft({ content: e.target.value })}
           placeholder="使用 Markdown 记录你的想法..."
-          className="w-full h-full bg-transparent border-0 text-foreground text-sm placeholder:text-muted resize-none focus:outline-none leading-relaxed py-1 font-mono"
+          className="w-full h-full bg-transparent border-0 text-foreground text-sm placeholder:text-muted/50 resize-none focus:outline-none leading-relaxed py-1 font-mono"
         />
       </div>
 
-      {/* Actions */}
-      <div className="px-4 py-3 border-t border-border flex items-center gap-2 flex-wrap">
-        <Button onClick={handleSave} loading={saving} size="sm">
+      <div className="px-4 py-3 border-t border-border/60 flex items-center gap-2 flex-wrap">
+        <Button onClick={handleSave} loading={saving} size="sm" className="bg-linear border-0 shadow-soft-sm">
           <Save className="w-4 h-4" />
           保存
         </Button>
@@ -175,7 +168,7 @@ export function NoteEditor() {
   const previewPane = (
     <div className="h-full overflow-y-auto px-5 py-4">
       {draft.title && (
-        <h1 className="text-2xl font-bold text-foreground mb-6 pb-4 border-b border-border tracking-tight">
+        <h1 className="text-2xl font-bold text-foreground mb-6 pb-4 border-b border-border/60 tracking-tight font-display">
           {draft.title}
         </h1>
       )}
@@ -184,16 +177,17 @@ export function NoteEditor() {
   )
 
   return (
-    <div className="h-full animate-fade-in flex flex-col">
-      <SplitView
-        left={editorPane}
-        right={previewPane}
-        defaultRatio={0.5}
-        minLeftPx={320}
-        minRightPx={280}
-      />
+    <div className="h-full animate-fade-in flex flex-col p-2">
+      <div className="card flex-1 overflow-hidden">
+        <SplitView
+          left={editorPane}
+          right={previewPane}
+          defaultRatio={0.5}
+          minLeftPx={320}
+          minRightPx={280}
+        />
+      </div>
 
-      {/* Delete Confirmation */}
       <DeleteConfirm
         open={deleteOpen}
         onClose={() => setDeleteOpen(false)}

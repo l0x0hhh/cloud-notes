@@ -18,7 +18,7 @@
 ### 运行
 
 ```powershell
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 go test ./... -v
 ```
 
@@ -88,11 +88,11 @@ go test ./... -v
 
 ```powershell
 # 终端 1 — 启动后端
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 go run main.go
 
 # 终端 2 — 运行测试
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 .\.venv\Scripts\activate
 cd tests\api
 pip install -r requirements.txt     # 仅首次
@@ -164,7 +164,7 @@ pytest -v
 简化版测试，使用 YAML 数据驱动，`conftest.py` 中 fixture 自动登录获取 token。
 
 ```powershell
-cd E:\cloud-notes\tests
+cd E:\AIstudy\project\cloud-notes\tests
 ..\.venv\Scripts\pip install pyyaml requests pytest
 ..\.venv\Scripts\python -m pytest -v
 ```
@@ -182,7 +182,7 @@ cd E:\cloud-notes\tests
 
 ```powershell
 # 1. Go 单元测试（无需任何外部服务）
-cd E:\cloud-notes
+cd E:\AIstudy\project\cloud-notes
 go test ./... -v
 # 期望：全部 PASS
 

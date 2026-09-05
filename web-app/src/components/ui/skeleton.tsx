@@ -14,7 +14,7 @@ export function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivEl
 
 export function NoteCardSkeleton() {
   return (
-    <div className="rounded-2xl bg-card p-4 space-y-3 border border-border">
+    <div className="rounded-[20px] bg-card-glass/30 p-4 space-y-3 border border-border/60 backdrop-blur-sm">
       <Skeleton className="h-5 w-2/3" />
       <Skeleton className="h-3 w-full" />
       <Skeleton className="h-3 w-1/2" />

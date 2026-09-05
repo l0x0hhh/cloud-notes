@@ -60,7 +60,7 @@ export function LoginForm({ onSwitchToRegister }: LoginFormProps) {
         error={errors.password?.message}
         {...register('password')}
       />
-      <Button type="submit" className="w-full" loading={loading}>
+      <Button type="submit" className="w-full bg-linear border-0 shadow-soft-sm" loading={loading}>
         <LogIn className="w-4 h-4" />
         登录
       </Button>

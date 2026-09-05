@@ -75,7 +75,6 @@ export function Toolbar({ textareaRef, onInsert }: ToolbarProps) {
     const hasSelection = start !== end
 
     if (tool.block) {
-      // Block-level: insert at start of current line
       const before = ta.value.substring(0, start)
       const lineStart = before.lastIndexOf('\n', start - 1) + 1
       ta.setRangeText(tool.before, lineStart, lineStart, 'end')
@@ -85,14 +84,11 @@ export function Toolbar({ textareaRef, onInsert }: ToolbarProps) {
     }
 
     if (hasSelection && tool.after !== undefined) {
-      // Wrap selection
       ta.setRangeText(tool.before + selected + (tool.after || ''), start, end, 'select')
     } else if (tool.after !== undefined) {
-      // Insert with placeholder
       const placeholder = tool.placeholder || ''
       ta.setRangeText(tool.before + placeholder + tool.after, start, end, 'select')
     } else {
-      // Plain insert
       ta.setRangeText(tool.before, start, end, 'end')
     }
 
@@ -101,10 +97,10 @@ export function Toolbar({ textareaRef, onInsert }: ToolbarProps) {
   }
 
   return (
-    <div className="flex items-center gap-0.5 px-2 py-1.5 bg-background-secondary/60 rounded-2xl border border-border overflow-x-auto">
+    <div className="flex items-center gap-0.5 px-2 py-1.5 bg-card-glass/60 backdrop-blur-md rounded-2xl border border-border/60 overflow-x-auto">
       {groups.map((group, gi) => (
         <div key={gi} className="flex items-center gap-0.5">
-          {gi > 0 && <div className="w-px h-5 bg-border mx-1 shrink-0" />}
+          {gi > 0 && <div className="w-px h-5 bg-border/60 mx-1 shrink-0" />}
           {group.tools.map((tool) => (
             <button
               key={tool.label}
@@ -112,8 +108,8 @@ export function Toolbar({ textareaRef, onInsert }: ToolbarProps) {
               title={tool.label}
               onClick={() => handleTool(tool)}
               className={cn(
-                'p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-card transition-colors',
-                'focus:outline-none focus:ring-1 focus:ring-primary/50'
+                'p-1.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-card-glass transition-colors',
+                'focus:outline-none focus:ring-1 focus:ring-brand/50'
               )}
             >
               <tool.icon className="w-4 h-4" />

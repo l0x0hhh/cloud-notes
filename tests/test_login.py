@@ -1,10 +1,10 @@
 import pytest
 import yaml
-import os
 from common.request_util import send_request
 
-data_path = os.path.join(os.path.dirname(__file__), "data", "test_data.yaml")
-data = yaml.safe_load(open(data_path))
+with open("tests/data/test_data.yaml", encoding="utf-8") as file:
+    data = yaml.safe_load(file)
+
 
 @pytest.mark.parametrize("case", data["login"])
 def test_login(case):

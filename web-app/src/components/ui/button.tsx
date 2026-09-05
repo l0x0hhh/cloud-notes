@@ -10,15 +10,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'primary', size = 'md', loading, disabled, children, ...props }, ref) => {
     const base =
-      'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary/70 disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.97]'
+      'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand/70 disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.97]'
 
     const variants = {
       primary:
-        'bg-primary text-primary-foreground hover:bg-primary-hover shadow-apple-sm hover:shadow-apple-md',
+        'bg-brand text-brand-foreground hover:opacity-90 shadow-soft-sm hover:shadow-soft-md',
       ghost:
-        'bg-card text-foreground hover:bg-card-hover border border-border',
+        'card text-foreground hover:bg-card-glass/90',
       danger:
-        'bg-danger text-danger-foreground hover:bg-danger-hover shadow-apple-sm',
+        'bg-danger text-danger-foreground hover:bg-danger-hover shadow-soft-sm',
     }
 
     const sizes = {

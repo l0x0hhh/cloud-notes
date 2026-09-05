@@ -3,6 +3,6 @@ login:
     password: "123456"
     expect: 200
 
-  - username: wrong
+  - username: wrong1
     password: "123456"
     expect: 401

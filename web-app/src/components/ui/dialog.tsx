@@ -44,27 +44,25 @@ export function Dialog({
         if (e.target === overlayRef.current) onClose()
       }}
     >
-      {/* Backdrop with glass effect */}
       <div className="absolute inset-0 bg-black/20 backdrop-blur-md" />
 
-      {/* Panel */}
       <div
         className={cn(
-          'relative w-full max-w-md bg-[#f5f5f7]/95 backdrop-blur-2xl border border-white/60 shadow-apple-xl rounded-[20px] p-6 animate-scale-in',
+          'relative w-full max-w-md card card-sm p-6 animate-scale-in',
           className
         )}
       >
         {title && (
           <div className="flex items-start justify-between mb-2">
             <div>
-              <h2 className="text-lg font-semibold text-foreground tracking-tight">{title}</h2>
+              <h2 className="text-lg font-semibold text-foreground tracking-tight font-display">{title}</h2>
               {description && (
                 <p className="text-sm text-muted-foreground mt-0.5">{description}</p>
               )}
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full text-muted hover:text-foreground hover:bg-black/5 transition-colors"
+              className="p-1.5 rounded-full text-muted hover:text-foreground hover:bg-card-glass/60 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
